@@ -1,0 +1,271 @@
+/* ==========================================================================
+   THE CORNERSTONE CAFÉ — REFINED EDITORIAL DESIGN SYSTEM
+   ========================================================================== */
+
+:root {
+  /* Warm sunlit palette derived from provided videos */
+  --bg-canvas: #FAF7F2;          /* Sunlit morning cream / warm ivory */
+  --bg-surface: #F3ECE3;         /* Steamed milk cream */
+  --bg-surface-elevated: #E9DFD3;/* Warm stoneware pottery */
+  --bg-deep: #1A1411;            /* Deep roasted bean espresso */
+  --bg-olive-tint: #F2F4EE;      /* Gentle natural olive morning tint */
+  
+  --text-primary: #231C18;       /* Deep warm roast, crisp & human */
+  --text-secondary: #584D44;     /* Toasted oak brown */
+  --text-muted: #8A7E74;         /* Soft steam grey */
+  --text-inverse: #FAF7F2;       /* Cream on dark roast */
+  --text-inverse-muted: #BCB2A7; /* Light muted on dark */
+
+  --accent-caramel: #C47D3B;     /* Toasted golden caramel */
+  --accent-olive: #556346;       /* Muted moss / café ficus leaf */
+  --accent-terracotta: #B96649;  /* Clay pottery */
+
+  --border-subtle: rgba(56, 42, 32, 0.08);
+  --border-medium: rgba(56, 42, 32, 0.16);
+  --border-dark: rgba(250, 247, 242, 0.14);
+
+  --font-serif: 'Fraunces', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  --container-max: 1360px;
+  --container-pad: clamp(1.5rem, 4.5vw, 4rem);
+
+  /* Curvatures — moving away from uniform cards to architectural shapes */
+  --radius-arch: clamp(60px, 8vw, 120px) clamp(60px, 8vw, 120px) 24px 24px;
+  --radius-squircle: clamp(24px, 4vw, 48px);
+  --radius-soft: 20px;
+  --radius-full: 9999px;
+
+  --ease-editorial: cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--font-sans);
+  background-color: var(--bg-canvas);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+}
+
+/* Lenis smooth scrolling integration */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-color: var(--bg-canvas);
+  color: var(--text-primary);
+}
+
+/* Typography styles */
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+h1, h2, h3, h4 {
+  font-weight: 400;
+  color: var(--text-primary);
+  line-height: 1.12;
+}
+
+p {
+  color: var(--text-secondary);
+  font-size: clamp(1rem, 1.15vw, 1.15rem);
+  line-height: 1.7;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img, video, canvas {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* Layout Utilities */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-pad);
+  padding-right: var(--container-pad);
+}
+
+.section-padding {
+  padding-top: clamp(5rem, 10vw, 10rem);
+  padding-bottom: clamp(5rem, 10vw, 10rem);
+}
+
+/* Modern Image Treatments */
+.img-arch {
+  border-radius: var(--radius-arch);
+  overflow: hidden;
+}
+
+.img-squircle {
+  border-radius: var(--radius-squircle);
+  overflow: hidden;
+}
+
+.img-organic-crop {
+  border-radius: clamp(32px, 5vw, 60px) clamp(16px, 3vw, 32px) clamp(48px, 6vw, 80px) clamp(20px, 3vw, 40px);
+  overflow: hidden;
+}
+
+/* Buttons with refined micro-interactions */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.95rem 2rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  border-radius: var(--radius-full);
+  transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn span {
+  transition: transform 0.25s var(--ease-editorial);
+  display: inline-block;
+}
+
+.btn svg {
+  transition: transform 0.25s var(--ease-editorial);
+  display: inline-block;
+}
+
+.btn:hover svg {
+  transform: translateX(4px);
+}
+
+.btn:hover span {
+  transform: translateX(1.5px);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-primary {
+  background-color: var(--text-primary);
+  color: var(--bg-canvas);
+  box-shadow: 0 4px 16px rgba(35, 28, 24, 0.16);
+}
+
+.btn-primary:hover {
+  background-color: #3b3028;
+  transform: translateY(-1.5px);
+  box-shadow: 0 8px 24px rgba(35, 28, 24, 0.22);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-medium);
+}
+
+.btn-secondary:hover {
+  border-color: var(--text-primary);
+  background-color: rgba(35, 28, 24, 0.04);
+  transform: translateY(-1.5px);
+}
+
+.btn-caramel {
+  background-color: var(--accent-caramel);
+  color: #FFFFFF;
+  box-shadow: 0 4px 16px rgba(196, 125, 59, 0.25);
+}
+
+.btn-caramel:hover {
+  background-color: #b06e30;
+  transform: translateY(-1.5px);
+  box-shadow: 0 8px 24px rgba(196, 125, 59, 0.32);
+}
+
+/* Accessibility */
+button:focus-visible, a:focus-visible {
+  outline: 2px solid var(--accent-caramel);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ==========================================================================
+   SHARED SCRUB STAGE GEOMETRY (Viewport Flush & Pin Spacer Seamlessness)
+   ========================================================================== */
+.scrub-stage {
+  width: 100%;
+  height: calc(100svh - var(--nav-height, 0px));
+  min-height: calc(100svh - var(--nav-height, 0px));
+  max-height: calc(100svh - var(--nav-height, 0px));
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.scrub-media,
+.scrub-stage canvas,
+.scrub-stage video {
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+  object-fit: cover;
+  margin: 0;
+  padding: 0;
+}
+
+.pin-spacer {
+  background-color: inherit !important;
+}
+
